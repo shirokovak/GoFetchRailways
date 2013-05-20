@@ -1,4 +1,4 @@
-package com.test.GoFetchRailways;
+package com.test.GoFetchRailways.ui;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -6,6 +6,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import com.test.GoFetchRailways.core.Graph;
+import com.test.GoFetchRailways.core.GraphFactory;
+
+/**
+ * Create form for Calculate Distance module.
+ * 
+ * @author	Alexandr Shirokov
+ */
 public class CalculateDistancePanel extends JPanel implements ActionListener {
 	private JTextField stops;
 	private JLabel result;

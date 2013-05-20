@@ -1,4 +1,4 @@
-package com.test.GoFetchRailways;
+package com.test.GoFetchRailways.ui;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -12,7 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.test.GoFetchRailways.core.Graph;
+import com.test.GoFetchRailways.core.GraphFactory;
 
+/**
+ * Create form for Journal Planner module.
+ * 
+ * @author	Alexandr Shirokov
+ */
 public class JourneyPlannerPanel extends JPanel implements ActionListener {
 	private JTextField from,to,stops;
 	private JCheckBox exact;

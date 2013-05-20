@@ -1,4 +1,4 @@
-package com.test.GoFetchRailways;
+package com.test.GoFetchRailways.core;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,6 +18,32 @@ public class Graph {
 		return nodes;
 	}
 
+	public void initDefault() {
+		String[] node_names = {"A","B","C","D","E","F","G","H","I","J"};
+		nodes = new HashMap<String,Node>();
+		for(String name:node_names) {
+			nodes.put(name, new Node(name));
+		}
+		nodes.get("A").addEdge(nodes.get("B"), 12);
+		nodes.get("A").addEdge(nodes.get("D"), 19);
+		nodes.get("A").addEdge(nodes.get("E"), 20);
+		nodes.get("A").addEdge(nodes.get("G"), 16);
+		nodes.get("B").addEdge(nodes.get("D"), 13);
+		nodes.get("B").addEdge(nodes.get("C"), 5);
+		nodes.get("B").addEdge(nodes.get("I"), 15);
+		nodes.get("C").addEdge(nodes.get("D"), 5);
+		nodes.get("D").addEdge(nodes.get("E"), 7);
+		nodes.get("E").addEdge(nodes.get("F"), 5);
+		nodes.get("F").addEdge(nodes.get("A"), 5);
+		nodes.get("G").addEdge(nodes.get("F"), 11);
+		nodes.get("H").addEdge(nodes.get("A"), 4);
+		nodes.get("H").addEdge(nodes.get("G"), 6);
+		nodes.get("I").addEdge(nodes.get("H"), 21);
+		nodes.get("I").addEdge(nodes.get("J"), 10);
+		nodes.get("J").addEdge(nodes.get("B"), 7);
+		nodes.get("J").addEdge(nodes.get("C"), 15);
+	}
+	
 	public void load(String file) throws FileNotFoundException,
 			IOException {
 		Properties prop = new Properties();

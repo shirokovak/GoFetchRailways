@@ -1,4 +1,4 @@
-package com.test.GoFetchRailways;
+package com.test.GoFetchRailways.core;
 
 import java.util.HashSet;
 

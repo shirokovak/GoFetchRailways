@@ -3,21 +3,26 @@ package com.test.GoFetchRailways;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.*;
 
+import com.test.GoFetchRailways.core.Graph;
+import com.test.GoFetchRailways.ui.CalculateDistancePanel;
+import com.test.GoFetchRailways.ui.JourneyPlannerPanel;
+import com.test.GoFetchRailways.ui.ShortestRoutePanel;
+
 
 public class GoFetchRailways  extends JFrame implements ActionListener {
-    private JMenuItem calcDistMI, openJourneyPlannerMI, calcShortestRouteMI;
+    private JMenuItem calcDistMI, openJourneyPlannerMI, calcShortestRouteMI, loadDataMI;
 	private JButton calcDistBtn, openJourneyPlannerBtn, calcShortestRouteBtn;
 	private JPanel topPanel, calcDistPanel, journeyPlannerPanel, shortestRoutePanel;
 	private Graph graph;
 	public static void start() {
         //Create and set up the window.
 		GoFetchRailways frame = new GoFetchRailways();
-		frame.load("routes.properties");
         //Display the window.
         frame.pack();
         frame.setVisible(true);
@@ -25,6 +30,7 @@ public class GoFetchRailways  extends JFrame implements ActionListener {
 	public GoFetchRailways() {
 		super("GoFetch Railways");
 		graph = new Graph();
+		graph.initDefault();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(400,300));
         setLocation(20, 20);
@@ -65,6 +71,12 @@ public class GoFetchRailways  extends JFrame implements ActionListener {
         menu = new JMenu("Settings");
         menu.getAccessibleContext().setAccessibleDescription(
                 "This menu does nothing");
+        loadDataMI = new JMenuItem("Load Data from File...");
+        loadDataMI.addActionListener(this);
+        loadDataMI.getAccessibleContext().setAccessibleDescription(
+                "Open file choose dialog.");
+        menu.add(loadDataMI);
+
         menuBar.add(menu);
 
         setJMenuBar(menuBar);
@@ -92,21 +104,32 @@ public class GoFetchRailways  extends JFrame implements ActionListener {
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == calcDistBtn || e.getSource() == calcDistMI) {
-			getContentPane().removeAll();
-			getContentPane().add(calcDistPanel);
-		} else if(e.getSource() == openJourneyPlannerBtn || e.getSource() == openJourneyPlannerMI) {
-			getContentPane().removeAll();
-			getContentPane().add(journeyPlannerPanel);
-		} else if(e.getSource() == calcShortestRouteBtn || e.getSource() == calcShortestRouteMI) {
-			getContentPane().removeAll();
-			getContentPane().add(shortestRoutePanel);
+		if(e.getSource() == loadDataMI) {
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showOpenDialog(this);
+			 
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File f = fc.getSelectedFile();
+                load(f.getAbsolutePath());
+            }
+		} else {
+			if(e.getSource() == calcDistBtn || e.getSource() == calcDistMI) {
+				getContentPane().removeAll();
+				getContentPane().add(calcDistPanel);
+			} else if(e.getSource() == openJourneyPlannerBtn || e.getSource() == openJourneyPlannerMI) {
+				getContentPane().removeAll();
+				getContentPane().add(journeyPlannerPanel);
+			} else if(e.getSource() == calcShortestRouteBtn || e.getSource() == calcShortestRouteMI) {
+				getContentPane().removeAll();
+				getContentPane().add(shortestRoutePanel);
+			}
+			validate();
+			repaint();
 		}
-		validate();
-		repaint();
 	}
 	public void load(String file) {
 		try {
+			graph = new Graph();
 			graph.load(file);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

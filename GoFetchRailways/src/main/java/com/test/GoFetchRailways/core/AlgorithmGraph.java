@@ -1,7 +1,8 @@
-package com.test.GoFetchRailways;
+package com.test.GoFetchRailways.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 
 
 public class AlgorithmGraph {
@@ -25,7 +26,15 @@ public class AlgorithmGraph {
 			}
 		}
 	}
-	
+	/**
+	 * Returns a list of routes that exist from <code>start</code> point to <code>end</code> point. 
+	 *
+	 * @param  start  name of start point
+	 * @param  end	name of end point
+	 * @param  maxLevel	the maximum number of stops in route
+	 * @param  exactly	founded route should have exactly maxLevel stops
+	 * @return	the list of possible routes
+	 */
 	public List getAllRoutes(String start, String end, int maxLevel, boolean exactly) {
 		AlgorithmNode from = getAlgorithmNode(start);
 		AlgorithmNode to = getAlgorithmNode(end);
@@ -51,6 +60,13 @@ public class AlgorithmGraph {
 		}
 	}
 	
+	/**
+	 * Returns a shortest route that exist from <code>start</code> point to <code>end</code> point. 
+	 *
+	 * @param  start  name of start point
+	 * @param  end	name of end point
+	 * @return	the shortest route's details
+	 */
 	public RouteDetails getShortestRoute(String start, String end) {
 		AlgorithmNode from = getAlgorithmNode(start);
 		AlgorithmNode to = getAlgorithmNode(end);

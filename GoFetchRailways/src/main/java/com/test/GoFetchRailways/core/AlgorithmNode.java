@@ -1,4 +1,5 @@
-package com.test.GoFetchRailways;
+package com.test.GoFetchRailways.core;
+
 
 public class AlgorithmNode extends Node {
 	public boolean vizited;

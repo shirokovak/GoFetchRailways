@@ -1,4 +1,4 @@
-package com.test.GoFetchRailways;
+package com.test.GoFetchRailways.ui;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -9,6 +9,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.test.GoFetchRailways.core.Graph;
+import com.test.GoFetchRailways.core.GraphFactory;
+import com.test.GoFetchRailways.core.RouteDetails;
+
+/**
+ * Create form for Shortest Route module.
+ * 
+ * @author	Alexandr Shirokov
+ */
 public class ShortestRoutePanel extends JPanel implements ActionListener {
 
 	private JTextField from,to;

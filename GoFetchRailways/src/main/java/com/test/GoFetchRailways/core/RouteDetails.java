@@ -1,4 +1,4 @@
-package com.test.GoFetchRailways;
+package com.test.GoFetchRailways.core;
 
 public class RouteDetails {
 	private int distance;
