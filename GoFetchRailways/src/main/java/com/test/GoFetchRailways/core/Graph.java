@@ -2,13 +2,9 @@ package com.test.GoFetchRailways.core;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.Properties;
 
 public class Graph {
@@ -48,10 +44,10 @@ public class Graph {
 			IOException {
 		Properties prop = new Properties();
 		prop.load(new FileInputStream(file));
-		Enumeration<String> keys = (Enumeration<String>) prop.propertyNames();
+		Enumeration<?> keys = prop.propertyNames();
 		nodes = new HashMap<String,Node>();
 		while (keys.hasMoreElements()) {
-			String k = keys.nextElement();
+			String k = (String) keys.nextElement();
 			if (k.length() != 2)
 				continue;
 			String fromName = "" + k.charAt(0);

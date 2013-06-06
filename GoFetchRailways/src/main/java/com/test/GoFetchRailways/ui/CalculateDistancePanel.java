@@ -15,6 +15,11 @@ import com.test.GoFetchRailways.core.GraphFactory;
  * @author	Alexandr Shirokov
  */
 public class CalculateDistancePanel extends JPanel implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8137963405856222728L;
+	
 	private JTextField stops;
 	private JLabel result;
 	private Graph g;

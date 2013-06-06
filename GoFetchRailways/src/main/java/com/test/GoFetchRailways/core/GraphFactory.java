@@ -54,7 +54,7 @@ public class GraphFactory {
 	 * @param  exact	founded route should have exactly maxLevel stops
 	 * @return	the list of possible routes
 	 */
-	public static List journeyPlanner(Graph g, String start, String end, int maxStops, boolean exact) {
+	public static List<String> journeyPlanner(Graph g, String start, String end, int maxStops, boolean exact) {
 		AlgorithmGraph ag = new AlgorithmGraph(g);
 		return ag.getAllRoutes(start, end, maxStops, exact);
 	}

@@ -20,6 +20,10 @@ import com.test.GoFetchRailways.core.RouteDetails;
  */
 public class ShortestRoutePanel extends JPanel implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7284281139326629780L;
 	private JTextField from,to;
 	private JLabel result;
 	private Graph g;

@@ -35,15 +35,15 @@ public class AlgorithmGraph {
 	 * @param  exactly	founded route should have exactly maxLevel stops
 	 * @return	the list of possible routes
 	 */
-	public List getAllRoutes(String start, String end, int maxLevel, boolean exactly) {
+	public List<String> getAllRoutes(String start, String end, int maxLevel, boolean exactly) {
 		AlgorithmNode from = getAlgorithmNode(start);
 		AlgorithmNode to = getAlgorithmNode(end);
-		ArrayList routes = new ArrayList<String>();
+		ArrayList<String> routes = new ArrayList<String>();
 		findRoute(routes, from, to, from.name, 0, maxLevel, exactly);
 		return routes;
 	}
 	
-	private void findRoute(ArrayList routes, AlgorithmNode start, AlgorithmNode end, String route, int level, int maxLevel, boolean exactly) {
+	private void findRoute(ArrayList<String> routes, AlgorithmNode start, AlgorithmNode end, String route, int level, int maxLevel, boolean exactly) {
 		if(start.equals(end)) {
 			if(exactly && level!=maxLevel) return;
 			routes.add(route);

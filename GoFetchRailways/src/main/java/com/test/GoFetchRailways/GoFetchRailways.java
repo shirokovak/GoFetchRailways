@@ -16,7 +16,11 @@ import com.test.GoFetchRailways.ui.ShortestRoutePanel;
 
 
 public class GoFetchRailways  extends JFrame implements ActionListener {
-    private JMenuItem calcDistMI, openJourneyPlannerMI, calcShortestRouteMI, loadDataMI;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -654020595289232560L;
+	private JMenuItem calcDistMI, openJourneyPlannerMI, calcShortestRouteMI, loadDataMI;
 	private JButton calcDistBtn, openJourneyPlannerBtn, calcShortestRouteBtn;
 	private JPanel topPanel, calcDistPanel, journeyPlannerPanel, shortestRoutePanel;
 	private Graph graph;

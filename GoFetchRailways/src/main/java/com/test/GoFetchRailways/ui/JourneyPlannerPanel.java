@@ -21,6 +21,10 @@ import com.test.GoFetchRailways.core.GraphFactory;
  * @author	Alexandr Shirokov
  */
 public class JourneyPlannerPanel extends JPanel implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6362978622104543889L;
 	private JTextField from,to,stops;
 	private JCheckBox exact;
 	private JTextArea result;
@@ -55,7 +59,7 @@ public class JourneyPlannerPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int max = Integer.parseInt(stops.getText());
-		List res = GraphFactory.journeyPlanner(g, from.getText(), to.getText(), max, exact.isSelected());
+		List<String> res = GraphFactory.journeyPlanner(g, from.getText(), to.getText(), max, exact.isSelected());
 		if(res.size() > 0) {
 			int rnum = 0;
 			StringBuilder sb = new StringBuilder();
